@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dgk.eventbusdemo.activity.ActivityC"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Third"
+        android:gravity="center"
+        android:textSize="30dp"
+        />
+
+    <Button
+        android:id="@+id/btn_close_b"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="关掉界面B"
+        />
+
+    <Button
+        android:id="@+id/btn_close_ab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="关掉界面AB"
+        />
+
+    <Button
+        android:id="@+id/btn_close_c"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="关掉本界面"
+        />
+</LinearLayout>
