@@ -121,9 +121,9 @@
 	}
 
 ## Demo示例
-	![](http://i.imgur.com/R9R79LG.gif)  
+	
+	![](http://i.imgur.com/PG8bAMB.gif)
 
-	<img src="http://i.imgur.com/R9R79LG.gif" width="320px"/>
 ----------
 
 ## Configuration  配置  
