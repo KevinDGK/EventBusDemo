@@ -5,8 +5,8 @@
 > 	官网：http://greenrobot.org/  
 > 	说明：下列文本性内容均翻译自官网最新的开发文档  
 > 	版权声明：本文为原创文章，未经允许不得转载  
-> 	创建时间：2016/6/3
-> 	最新修改时间：2016/6/3
+> 	博客地址：http://blog.csdn.net/kevindgk
+> 	GitHub地址：https://github.com/KevinDGK/EventBusDemo
 
 ## Features	
 	1.简单且强大：EventBus是一个非常容易学会的轻量级API类库。你的软件架构可以通过组件间的结构而得到好处：当使用事件(event)的时候，订阅者不需要知道关于发送者的信息。  
@@ -142,8 +142,83 @@
 
 ----------
 ## Sticky Events 粘性事件
+	当一个事件被post之后，也许我们对它携带的信息仍然很感兴趣。比如说。一个事件，标志着初始化完成。或者是你有一些传感器或者定位的信息，并且你想保持住他们最新的数值。  
+	这个时候，你就可以直接使用粘性事件(sticky events)，而不用自己做缓存。EventBus在内存中以一种特定的格式保存最新的数据，并且这个粘性事件能够被发送给订阅者  
+	或者明确查询。如此，你不许要任何特定的逻辑去考虑获取已经存在的数据。  
 	
+	1.发布事件
+	EventBus.getDefault().postSticky(new MessageEvent("Hello everyone!"));  
+	
+	2.接收事件
+	当该事件被post之后，如果一个Activity启动了以后，这个事件就会立刻被发送给它(如果它内部包含订阅者)。在注册时期，所有的粘性订阅方法都会被立刻得到之前post的粘性事件。
 
+	@Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
 
+    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
+    public void onEvent(MessageEvent event) {
+        // UI updates must run on MainThread
+        textField.setText(event.message);
+    }
+
+    @Override
+    public void onStop() {
+        EventBus.getDefault().unregister(this);
+        super.onStop();
+    }
+
+	3.手动获取或移除粘性事件
+	就像上面介绍的那样，最新的粘性事件当activity/fragment注册的时候，就会自动匹配投递订阅者。但是有时候，也可以非常方便的手动查询或者删除粘性事件。因为只有移除了粘性事件之后，才不会被发送。
+	
+	查询：
+	MessageEvent stickyEvent = EventBus.getDefault().getStickyEvent(MessageEvent.class);
+	删除：
+	// Better check that an event was actually posted before
+	if(stickyEvent != null) {
+	    // "Consume" the sticky event
+	    EventBus.getDefault().removeStickyEvent(stickyEvent);
+	    // Now do something with it
+	}  
+   
+	总结：  
+	1.可以用来保存一些数据，比如有多个地方(页面)需要使用的数据：传感器信息、登陆信息等；  
+	2.如果需要更新数据，仅仅需要post/get stikcy事件即可，不需要有任何的保存和读取数据的逻辑；  
+	3.如果不需要，可以手动删除(单个或所有) 
+----------
+## Priorities and Event Cancellation 优先级和事件取消
+
+----------
+
+## Subscriber Index	订阅者索引
+	EventBus 3.0新特性，这是一个可选择的优化来加速订阅者注册初始化。订阅者索引可以在项目构建(build)的时候，使用EventBus注解处理器来创建的。  
+	虽然不是必须使用索引，但是在Android应用的时候仍然推荐使用索引来提升性能。
+	
+----------
+## 源码分析
+### EventBus.getDefault()
+	EventBus.getDefault()获取的是单例，并且双重判断，防止并发：
+	/** Convenience singleton for apps using a process-wide EventBus instance. */
+    public static EventBus getDefault() {
+        if (defaultInstance == null) {
+            synchronized (EventBus.class) {
+                if (defaultInstance == null) {
+                    defaultInstance = new EventBus();
+                }
+            }
+        }
+        return defaultInstance;
+    }
+## ProGuard 混淆
+
+----------	
+## EventBus和广播的区别
+
+----------	
+## EventBus和RxJava(RxAndroid)区分
+
+----------
 ## 注意事项
 1. 如果修改EventBus的相关配置，或者删除了一些事件，那么调试运行程序的时候，需要clean一下，否则上一次编译时EventBus注册的配置和事件还存在。  
