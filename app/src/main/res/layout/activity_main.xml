@@ -1,143 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="10dp">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:text="POSTING：哪个线程发送，哪个线程执行"
-        android:textColor="#f00"
-        android:textSize="16sp" />
-
-    <Button
-        android:id="@+id/btn_post_from_main"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="主线程发送event - 主线程接收"
-        android:textAllCaps="false"
-        android:textSize="16sp" />
-
-    <Button
-        android:id="@+id/btn_post_from_sub"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="子线程发送event - 子线程接收"
-        android:textAllCaps="false"
-        android:textSize="16sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:text="MAIN：不管哪个线程发送，总会在UI线程执行"
-        android:textColor="#f00"
-        android:textSize="16sp" />
-
-    <Button
-        android:id="@+id/btn_main_from_main"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="主线程发送event - 主线程立刻执行"
-        android:textAllCaps="false"
-        android:textSize="16sp" />
-
-    <Button
-        android:id="@+id/btn_main_from_sub"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="子线程发送event - 主线程接收"
-        android:textAllCaps="false"
-        android:textSize="16sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:text="BACKGROUND：不管哪个线程发送，总会在子线程执行"
-        android:textColor="#f00"
-        android:textSize="16sp" />
-
-    <Button
-        android:id="@+id/btn_bg_from_main"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="主线程发送event - 开子线程执行"
-        android:textAllCaps="false"
-        android:textSize="16sp" />
-
-    <Button
-        android:id="@+id/btn_bg_from_sub"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="子线程发送event - 子线程立刻执行"
-        android:textAllCaps="false"
-        android:textSize="16sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:text="ASYNC：不管哪个线程发送，总会开单独线程执行"
-        android:textColor="#f00"
-        android:textSize="16sp" />
-
-    <Button
-        android:id="@+id/btn_async_from_main"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="主线程发送event - 开子线程执行"
-        android:textAllCaps="false"
-        android:textSize="16sp" />
-
-    <Button
-        android:id="@+id/btn_async_from_sub"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="子线程发送event - 开子线程执行"
-        android:textAllCaps="false"
-        android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/tv_content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:text="现在神马都没有，真的神马都没有！"
-        android:textColor="#000"
-        android:textSize="20sp" />
-
-    <TextView
+    >
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#000"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
 
-    <Button
-        android:id="@+id/btn_open_a"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="用法一：指定关闭打开的界面"
-        android:textSize="16sp"
-        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="POSTING：哪个线程发送，哪个线程执行"
+            android:textColor="#f00"
+            android:textSize="16sp" />
 
-    <Button
-        android:id="@+id/btn_post_data"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="用法二：在Activity、Fragment中传递数据"
-        android:textSize="16sp"
-        />
-    <Button
-        android:id="@+id/btn_send_sticky_event"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="用法三：发布粘性事件(Sticky Event),并打开新的界面"
-        android:textSize="16sp"
-        />
-</LinearLayout>
+        <Button
+            android:id="@+id/btn_post_from_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="主线程发送event - 主线程接收"
+            android:textAllCaps="false"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_post_from_sub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="子线程发送event - 子线程接收"
+            android:textAllCaps="false"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="MAIN：不管哪个线程发送，总会在UI线程执行"
+            android:textColor="#f00"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_main_from_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="主线程发送event - 主线程立刻执行"
+            android:textAllCaps="false"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_main_from_sub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="子线程发送event - 主线程接收"
+            android:textAllCaps="false"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="BACKGROUND：不管哪个线程发送，总会在子线程执行"
+            android:textColor="#f00"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_bg_from_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="主线程发送event - 开子线程执行"
+            android:textAllCaps="false"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_bg_from_sub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="子线程发送event - 子线程立刻执行"
+            android:textAllCaps="false"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="ASYNC：不管哪个线程发送，总会开单独线程执行"
+            android:textColor="#f00"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_async_from_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="主线程发送event - 开子线程执行"
+            android:textAllCaps="false"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_async_from_sub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="子线程发送event - 开子线程执行"
+            android:textAllCaps="false"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="现在神马都没有，真的神马都没有！"
+            android:textColor="#000"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#000"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            />
+
+        <Button
+            android:id="@+id/btn_open_a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="用法一：指定关闭打开的界面"
+            android:textSize="16sp"
+            />
+
+        <Button
+            android:id="@+id/btn_post_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="用法二：在Activity、Fragment中传递数据"
+            android:textSize="16sp"
+            />
+        <Button
+            android:id="@+id/btn_send_sticky_event"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="用法三：发布粘性事件(Sticky Event),并打开新的界面"
+            android:textSize="16sp"
+            />
+    </LinearLayout>
+</ScrollView>
+

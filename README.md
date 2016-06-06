@@ -5,7 +5,7 @@
 > 	官网：http://greenrobot.org/  
 > 	说明：下列文本性内容均翻译自官网最新的开发文档  
 > 	版权声明：本文为原创文章，未经允许不得转载  
-> 	博客地址：http://blog.csdn.net/kevindgk
+> 	博客地址：http://blog.csdn.net/kevindgk  
 > 	GitHub地址：https://github.com/KevinDGK/EventBusDemo
 
 ## Features	
@@ -35,7 +35,8 @@
 	} 
 
 ### 2.准备订阅者  
-	2.1 订阅者实现事件的处理方法，也叫"subscriber methods"，当事件event被投递的时候就会调用该方法。该方法必须被 @Subscribe 注解定义。
+	2.1 订阅者实现事件的处理方法，也叫"subscriber methods"，当事件event被投递的时候就会调用该方法。
+	该方法必须被 @Subscribe 注解定义。  
 	请注意，EventBus3的方法名称可以被任意选择，不需要向EventBus2中那样约定的命名方式。
 
 	// This method will be called when a MessageEvent is posted
@@ -50,9 +51,10 @@
 	    doSomethingWith(event);
 	}  
 
-	2.2 订阅者也需要注册和取消注册，仅仅当订阅者被注册的时候，才能接收到事件。在Android中，Activity和Fragments通常根据生命周期绑定EventBus。   
+	2.2 订阅者也需要注册和取消注册，仅仅当订阅者被注册的时候，才能接收到事件。  
+	在Android中,Activity和Fragments通常根据生命周期绑定EventBus。   
 	
-	- 在onCreate和onDestroy方法中注册和取消注册  
+	- 在onCreate和onDestroy方法中注册和取消注册 (建议)  
 	- 在onStart和onStop方法中注册和取消注册	 (分屏的时候可以使用)
 	根据需要，一般可以选择第一种，第二种界面不可见后就取消了注册。
 
@@ -118,6 +120,10 @@
 	    backend.send(event.message);
 	}
 
+## Demo示例
+	![](http://i.imgur.com/R9R79LG.gif)  
+
+	<img src="http://i.imgur.com/R9R79LG.gif" width="320px"/>
 ----------
 
 ## Configuration  配置  
