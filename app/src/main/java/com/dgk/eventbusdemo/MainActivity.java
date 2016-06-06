@@ -11,6 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dgk.eventbusdemo.activity.ActivityA;
+import com.dgk.eventbusdemo.activity.ActivityD;
+import com.dgk.eventbusdemo.event.LoginInfoBean;
 import com.dgk.eventbusdemo.event.MessageEventA;
 import com.dgk.eventbusdemo.event.MessageEventB;
 import com.dgk.eventbusdemo.event.MessageEventC;
@@ -32,7 +34,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btn_async_from_sub;
     private Button btn_open_a;
     private Button btn_post_data;
+    private Button btn_send_sticky_event;
     private TextView tv_content;
+
+    private int index;
 
 
     @Override
@@ -54,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_async_from_sub = (Button) findViewById(R.id.btn_async_from_sub);
         btn_open_a = (Button) findViewById(R.id.btn_open_a);
         btn_post_data = (Button) findViewById(R.id.btn_post_data);
+        btn_send_sticky_event = (Button) findViewById(R.id.btn_send_sticky_event);
 
         btn_post_from_main.setOnClickListener(this);
         btn_post_from_sub.setOnClickListener(this);
@@ -65,6 +71,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_async_from_sub.setOnClickListener(this);
         btn_open_a.setOnClickListener(this);
         btn_post_data.setOnClickListener(this);
+        btn_send_sticky_event.setOnClickListener(this);
+
+        index = 0;
     }
 
 //    @Override
@@ -153,7 +162,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.btn_post_data:
-                Toast.makeText(MainActivity.this,"尚未写完：可暂时参考外卖统一接单",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,"尚未写完",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.btn_send_sticky_event:
+                index++;
+                EventBus.getDefault().postSticky(new LoginInfoBean(""+index));
+                Toast.makeText(MainActivity.this, "发布了粘性事件-登陆信息", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this, ActivityD.class));  // 打开界面D
                 break;
         }
     }

@@ -133,4 +133,11 @@
         android:text="用法二：在Activity、Fragment中传递数据"
         android:textSize="16sp"
         />
+    <Button
+        android:id="@+id/btn_send_sticky_event"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="用法三：发布粘性事件(Sticky Event),并打开新的界面"
+        android:textSize="16sp"
+        />
 </LinearLayout>

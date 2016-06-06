@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dgk.eventbusdemo.activity.ActivityC"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="界面一打开，下面是传递过来的粘性事件的信息："
+        android:textSize="18dp"
+        android:textColor="#f00"
+        android:padding="5dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_sticky_event"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:padding="5dp"
+        />
+
+    <Button
+        android:id="@+id/btn_finish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="关掉界面"
+        android:textSize="16sp"
+        />
+</LinearLayout>

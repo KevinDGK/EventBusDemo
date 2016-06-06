@@ -17,7 +17,9 @@
         </activity>
         <activity android:name=".activity.ActivityA" />
         <activity android:name=".activity.ActivityB" />
-        <activity android:name=".activity.ActivityC"></activity>
+        <activity android:name=".activity.ActivityC"/>
+        <activity android:name=".activity.ActivityD"/>
+        <activity android:name=".activity.ActivityE"/>
     </application>
 
 </manifest>
